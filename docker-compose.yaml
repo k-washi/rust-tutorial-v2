@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  rust-env-dev:
+    build: 
+      context: .
+      args:
+      - uid=1001
+      - gid=1001
+      - username=ruser
+      - project_name=rustenv
+    container_name: rust-env-dev
+    image: rust-env-dev-image
+    shm_size: '24gb'
+    tty: true
+    volumes: 
+      - $PWD:/home/ruser/rustenv
+    command: '/bin/bash'
+    ports:
+      - 16681-16690:16681-16690
